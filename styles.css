@@ -111,11 +111,15 @@ ul {
 #player-album-art {
   background-color: var(--secondary-color);
   border: 6px solid var(--background-color);
+  overflow: hidden;
 }
+
+
 
 #player-album-art img {
   width: 150px;
   display: block;
+  object-fit: cover;
 }
 
 .player-display {
