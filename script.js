@@ -85,9 +85,20 @@ const allSongs = [
   },
 ];
   
-let i = 1;
- const audio = new Audio(allSongs[i].src);
+
+
+
+const audio = new Audio();
+
+const playSong = (id) => {
+  id = Math.floor(Math.random() * 9);
+  audio.src = allSongs[id].src;
+  audio.title = allSongs[id].title;
+  audio.id = allSongs[id].id;
   audio.play();
+};
+
+let i = 0;
 
 audio.addEventListener ("ended", () => {
   i++;
@@ -97,12 +108,19 @@ audio.addEventListener ("ended", () => {
   }else {
      console.log("Playlist ended 🎶");
   }
-  
 })
 
+const pauseSong = () => {
+  audio.pause();
+};
 
-// const audio = new Audio(allSongs[10].src);
-// audio.play();
+playButton.addEventListener("click", playSong);
+
+pauseButton.addEventListener("click",  pauseSong);
+
+
+
+
 
 
 // let userData = {
@@ -312,3 +330,5 @@ audio.addEventListener ("ended", () => {
 
 // renderSongs(sortSongs());
 // setPlayButtonAccessibleText();
+
+
