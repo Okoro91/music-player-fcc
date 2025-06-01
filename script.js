@@ -87,39 +87,35 @@ const allSongs = [
   
 
 
-
+let currentSongIndex = 0;
 const audio = new Audio();
 
 const playSong = (id) => {
-  id = Math.floor(Math.random() * 9);
-  audio.src = allSongs[id].src;
-  audio.title = allSongs[id].title;
-  audio.id = allSongs[id].id;
-  audio.play();
+  const song = allSongs.find(song => song.id === id);
+  if (song) {
+    audio.src = song.src;
+    audio.play()
+  } else {
+    console.log("Song not found");
+  }
 };
 
-let i = 0;
 
-audio.addEventListener ("ended", () => {
-  i++;
-  if(i < allSongs.length){
-      audio.src = allSongs[i].src;
-      audio.play();
-  }else {
-     console.log("Playlist ended 🎶");
-  }
-})
+const playNextSong = () => {
+   currentSongIndex = currentSongIndex + 1;
+   playSong(currentSongIndex)
+  };
+
+
 
 const pauseSong = () => {
   audio.pause();
-};
+};    
 
-playButton.addEventListener("click", playSong);
-
+playButton.addEventListener("click", () => playSong(currentSongIndex));
 pauseButton.addEventListener("click",  pauseSong);
-
-
-
+nextButton.addEventListener("click", playNextSong);
+audio.addEventListener("ended", playNextSong);
 
 
 
@@ -129,11 +125,11 @@ pauseButton.addEventListener("click",  pauseSong);
 //   songCurrentTime: 0,
 // };
 
+
 // const playSong = (id) => {
 //   const song = userData?.songs.find((song) => song.id === id);
 //   audio.src = song.src;
 //   audio.title = song.title;
-
 //   if (userData?.currentSong === null || userData?.currentSong.id !== song.id) {
 //     audio.currentTime = 0;
 //   } else {
@@ -141,12 +137,12 @@ pauseButton.addEventListener("click",  pauseSong);
 //   }
 //   userData.currentSong = song;
 //   playButton.classList.add("playing");
-
 //   highlightCurrentSong();
 //   setPlayerDisplay();
 //   setPlayButtonAccessibleText();
 //   audio.play();
 // };
+
 
 // const pauseSong = () => {
 //   userData.songCurrentTime = audio.currentTime;
