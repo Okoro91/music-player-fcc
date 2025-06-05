@@ -125,10 +125,23 @@ const setPlayerDisplay = (song) => {
   songArtist.textContent = currentArtist;
 };
 
+const shuffle = () => {
+  currentSongIndex = Math.floor(Math.random() * allSongs.length);
+  audio.src = allSongs[currentSongIndex].src;
+  audio.play();
+  setPlayerDisplay(allSongs[currentSongIndex
+
+]);
+playNextSong();
+playPreviousSong();
+};
+
+
 playButton.addEventListener("click", () => playSong(currentSongIndex));
 pauseButton.addEventListener("click",  pauseSong);
 nextButton.addEventListener("click", playNextSong);
 previousButton.addEventListener("click", playPreviousSong);
+shuffleButton.addEventListener("click", shuffle);
 audio.addEventListener("ended", playNextSong);
 
 
