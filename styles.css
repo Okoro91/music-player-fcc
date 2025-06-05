@@ -1,5 +1,4 @@
 :root {
-  /* colors */
   --primary-color: #dfdfe2;
   --secondary-color: #ffffff;
   --app-background-color: #4d4d62;
@@ -7,11 +6,11 @@
   --foreground-color: #3b3b4f;
   --highlight-color: #f1be32;
 
-  /* font sizes */
+  
   --root-font-size: 16px;
   font-size: var(--root-font-size);
 
-  /* font-families */
+  
   --font-headline: "Roboto Mono", monospace;
   --font-family: "Lato", sans-serif;
 }
@@ -29,8 +28,9 @@ body {
 }
 
 h1 {
-  font-size: 1.125rem;
+  font-size: 0.6rem;
   line-height: 1.6;
+  font-weight: 900;
 }
 
 h2 {
@@ -173,7 +173,7 @@ button:focus,
   outline-width: 2px;
 }
 
-/* Playlist */
+
 .playlist {
   height: auto;
   padding: 10px;

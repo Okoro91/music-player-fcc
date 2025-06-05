@@ -95,26 +95,40 @@ const playSong = (id) => {
   if (song) {
     audio.src = song.src;
     audio.play()
+    setPlayerDisplay(song);
   } else {
     console.log("Song not found");
   }
+  
 };
-
 
 const playNextSong = () => {
    currentSongIndex = currentSongIndex + 1;
    playSong(currentSongIndex)
   };
 
-
+  const playPreviousSong = () => {
+    currentSongIndex = currentSongIndex - 1;
+   playSong(currentSongIndex)
+  }
 
 const pauseSong = () => {
   audio.pause();
-};    
+};  
+
+const setPlayerDisplay = (song) => {
+  const playingSong = document.getElementById("player-song-title");
+  const songArtist = document.getElementById("player-song-artist");
+  const currentTitle = song?.title;
+  const currentArtist = song?.artist;
+  playingSong.textContent = currentTitle; 
+  songArtist.textContent = currentArtist;
+};
 
 playButton.addEventListener("click", () => playSong(currentSongIndex));
 pauseButton.addEventListener("click",  pauseSong);
 nextButton.addEventListener("click", playNextSong);
+previousButton.addEventListener("click", playPreviousSong);
 audio.addEventListener("ended", playNextSong);
 
 
