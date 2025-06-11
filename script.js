@@ -103,11 +103,17 @@ const playSong = (id) => {
 };
 
 const playNextSong = () => {
+  if(currentSongIndex === allSongs.length -1){
+    currentSongIndex = 0;
+  }
    currentSongIndex = currentSongIndex + 1;
    playSong(currentSongIndex)
   };
 
   const playPreviousSong = () => {
+    if(currentSongIndex < allSongs[1].id){
+      currentSongIndex = allSongs.length - 1;
+    }
     currentSongIndex = currentSongIndex - 1;
    playSong(currentSongIndex)
   }
